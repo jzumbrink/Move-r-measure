@@ -90,35 +90,31 @@ void measure_count()
         std::cout << "            " << format_time(time_count / num_patterns) << "/pattern" << std::endl;
         std::cout << "            " << format_time(time_count / num_occurrences) << "/occurrence" << std::endl;
     }
-
-    if (mf.is_open()) {
-        mf << "RESULT";
-        mf << " type=count";
-        mf << " text=" << name_text_file;
-        mf << " a=" << index.balancing_parameter();
-        mf << " n=" << index.input_size();
-        mf << " sigma=" << std::to_string(index.alphabet_size());
-        mf << " r=" << index.num_bwt_runs();
-        mf << " r_=" << index.M_LF().num_intervals();
+    std::cout << "RESULT";
+    std::cout << " type=count";
+    std::cout << " text=" << name_text_file;
+    std::cout << " a=" << index.balancing_parameter();
+    std::cout << " n=" << index.input_size();
+    std::cout << " sigma=" << std::to_string(index.alphabet_size());
+    std::cout << " r=" << index.num_bwt_runs();
+    std::cout << " r_=" << index.M_LF().num_intervals();
 
         if constexpr (support != _count && support != _locate_one) {
             if constexpr (support == _locate_move) {
-                mf << " r__=" << index.M_Phi_m1().num_intervals();
+                std::cout << " r__=" << index.M_Phi_m1().num_intervals();
             } else if constexpr (support == _locate_rlzdsa) {
-                mf << " z__=" << index.num_phrases_rlzdsa();
-                mf << " z_l_=" << index.num_literal_phrases_rlzdsa();
-                mf << " z_c_=" << index.num_copy_phrases_rlzdsa();
+                std::cout << " z__=" << index.num_phrases_rlzdsa();
+                std::cout << " z_l_=" << index.num_literal_phrases_rlzdsa();
+                std::cout << " z_c_=" << index.num_copy_phrases_rlzdsa();
             }
         }
 
-        mf << " pattern_length=" << pattern_length;
-        index.log_data_structure_sizes(mf);
-        mf << " num_patterns=" << num_patterns;
-        mf << " num_occurrences=" << num_occurrences;
-        mf << " time_count=" << time_count;
-        mf << std::endl;
-        mf.close();
-    }
+        std::cout << " pattern_length=" << pattern_length;
+        std::cout << " size_in_bytes=" << index.size_in_bytes();
+        std::cout << " num_patterns=" << num_patterns;
+        std::cout << " num_occurrences=" << num_occurrences;
+        std::cout << " time_count=" << time_count;
+        std::cout << std::endl;
 }
 
 int main(int argc, char** argv)
