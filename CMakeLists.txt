@@ -80,10 +80,10 @@ target_link_libraries(move_r INTERFACE
 )
 
 option(MOVE_R_BUILD_CLI "Build the cli programs" ON)
-option(MOVE_R_BUILD_BENCH_CLI "Build the benchmark cli program" ON)
-option(MOVE_R_BUILD_EXAMPLES "Build the example programs" ON)
-option(MOVE_R_BUILD_TESTS "Build tests" ON)
-option(MOVE_R_BUILD_BENCH "Build program for benchmarking internal data structures" ON)
+option(MOVE_R_BUILD_BENCH_CLI "Build the benchmark cli program" OFF)
+option(MOVE_R_BUILD_EXAMPLES "Build the example programs" OFF)
+option(MOVE_R_BUILD_TESTS "Build tests" OFF)
+option(MOVE_R_BUILD_BENCH "Build program for benchmarking internal data structures" OFF)
 
 ############################# move-r cli #############################
 

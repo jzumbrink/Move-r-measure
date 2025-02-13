@@ -105,14 +105,6 @@ void measure_locate()
     pos_t count;
 
     for (uint64_t i = 0; i < num_patterns; i++) {
-        perc = (100 * i) / num_patterns;
-        is_sorted = false;
-
-        if (perc > last_perc) {
-            std::cout << perc << "% done .." << std::endl;
-            last_perc = perc;
-        }
-
         patterns_file.read((char*)&pattern[0], pattern_length);
         t2 = now();
         index.locate(pattern, occurrences);

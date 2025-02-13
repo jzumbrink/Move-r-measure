@@ -1,6 +1,7 @@
 #include <filesystem>
 #include <iostream>
 #include <move_r/move_r.hpp>
+#include "malloc_count.h"
 
 int ptr = 1;
 uint64_t n;
